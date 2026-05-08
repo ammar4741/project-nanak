@@ -1,92 +1,151 @@
-// import image from "./image/nanak.webp";
+import { useEffect, useState } from "react";
+
 const About = () => {
+
+  const images = [
+    "/nanak6.webp",
+    "/nanak5.webp",
+    "/nanak3.webp",
+    "/nanak1.webp",
+  ];
+
+  const [current, setCurrent] = useState(0);
+
+  // Auto Premium Slider
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % images.length);
+    }, 4500);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
   return (
-   <div id="about" className="bg-[#F5EBE0]">
-     <div className="container mx-auto py- ">
-      {/* carousel start  */}
-      
-     <div className="p-1">
-      <div className="carousel w-full">
-  <div id="item1" className="carousel-item w-full">
-    <img
-      src="/nanak6.webp"
-      className="w-full" />
-  </div>
-  <div id="item2" className="carousel-item w-full">
-    <img
-      src="/nanak5.webp"
-      className="w-full" />
-  </div>
-  <div id="item3" className="carousel-item w-full">
-    <img
-      src="/nanak3.webp"
-      className="w-full" />
-  </div>
-  <div id="item4" className="carousel-item w-full">
-    <img
-      src="/nanak1.webp"
-      className="w-full" />
-  </div>
-</div>
-<div className="flex w-full justify-center gap-2 py-1">
-  <a href="#item1" className="btn btn-xs">1</a>
-  <a href="#item2" className="btn btn-xs">2</a>
-  <a href="#item3" className="btn btn-xs">3</a>
-  <a href="#item4" className="btn btn-xs">4</a>
-</div>
-     </div>
-      {/* carousel end */}
-      <div  className="container mx-auto text-black pb-4">
-        <div className="p-2 md:flex lg:flex justify-around items-center gap-6">
-          <div className="text-xl">
-            <h1 className="font-bold py-2">
-              Bir Muktijuddha Advocate Jahangir Kabir Nanak
-            </h1>
-            <h2 className="font-semibold">Former Minister</h2>
-            <h2 className="font-semibold md:py-2">
-              Ministry of Textiles & Jute
-            </h2>
-            <h2 className="font-semibold mb-6">
-              Goverment of The People's Republic of Bangladesh
-            </h2>
-            {/* button  */}
-            <a
-              href="https://en.wikipedia.org/wiki/Jahangir_Kabir_Nanak"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-blue-400 shadow-lg shadow-gray-700 p-2 rounded-xl font-semibold"
-            >
-              Read More...
-            </a>
+    <div id="about" className="bg-[#F5EBE0]">
+
+      <div className="container mx-auto">
+
+        {/* Premium Carousel */}
+        <div className="p-1">
+
+          <div className="relative w-full overflow-hidden rounded-2xl">
+
+            {/* IMPORTANT HEIGHT */}
+            <div className="relative h-[250px] md:h-[500px] w-full">
+
+              {images.map((img, index) => (
+                <div
+                  key={index}
+                  className={`absolute inset-0 transition-all duration-[2000ms] ease-in-out ${
+                    current === index
+                      ? "opacity-100 scale-100 z-10"
+                      : "opacity-0 scale-105 z-0"
+                  }`}
+                >
+                  <img
+                    src={img}
+                    alt="slider"
+                    className="w-full h-full"
+                  />
+
+                  {/* Premium Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent"></div>
+                </div>
+              ))}
+
+            </div>
+
           </div>
-          <img
-            className="h-96 w-full py-3 mt-6 rounded-4xl lg:h-[700px] lg:w-[650px]"
-            src="/kabirnanak.webp"
-            alt="jahangir kabir nanak"
-          />
+
         </div>
-        <p className="container mx-auto text-lg px-2">
-          
-          <span className="font-bold">Jahangir Kabir Nanak</span> (born 14
-          January 1954) is a Bangladesh Awami League politician. He was a
-          Minister of Textiles and Jute and a former Member of Parliament
-          representing the Dhaka-13 constituency. Nanak is also a Presidium
-          Member of the Awami League Central Committee. Previously, he served as
-          the State Minister for Local Government, Rural Development and
-          Co-operatives.{" "}
-          <span className="hidden lg:block">
-            <span className="text-xl font-bold">Early life:</span> <br />
-            Nanak was born on 14 January 1954 in Kshirad Mukherjee Lane of North
-            Alekanda in Barisal, East Bengal, Dominion of Pakistan.[1] His
-            father, Maulvi Bazlur Rahman Serniabat, was an employee at the
-            Barisal Collectorate Office. They belongs to the Bengali Muslim
-            Serniabat family, who are direct descendants of Emperor Sher Shah
-            Suri.[2][3] He has a bachelor's degree in art and law.[1]
-          </span>
-        </p>
+        {/* Carousel End */}
+
+        <div className="container mx-auto text-black pb-4">
+
+          <div className="p-2 md:flex lg:flex justify-around items-center gap-6">
+
+            {/* Left Text */}
+            <div className="text-xl">
+
+              <h1 className="font-bold py-2 text-2xl lg:text-4xl">
+                Bir Muktijuddha Advocate Jahangir Kabir Nanak
+              </h1>
+
+              <h2 className="font-semibold">
+                Former Minister
+              </h2>
+
+              <h2 className="font-semibold md:py-2">
+                Ministry of Textiles & Jute
+              </h2>
+
+              <h2 className="font-semibold mb-6">
+                Government of The People's Republic of Bangladesh
+              </h2>
+
+              {/* Button */}
+              <a
+                href="https://en.wikipedia.org/wiki/Jahangir_Kabir_Nanak"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-blue-500 hover:bg-blue-600 duration-300 shadow-lg shadow-gray-500 px-5 py-3 rounded-xl font-semibold text-white"
+              >
+                Read More...
+              </a>
+
+            </div>
+
+            {/* Right Image */}
+            <img
+              className="h-96 w-full py-3 mt-6 rounded-[40px] object-cover lg:h-[700px] lg:w-[650px]"
+              src="/kabirnanak.webp"
+              alt="jahangir kabir nanak"
+            />
+
+          </div>
+
+          {/* Description */}
+          <p className="container mx-auto text-lg px-2 leading-9">
+
+            <span className="font-bold">
+              Jahangir Kabir Nanak
+            </span>{" "}
+            (born 14 January 1954) is a Bangladesh Awami League politician.
+            He was a Minister of Textiles and Jute and a former Member of
+            Parliament representing the Dhaka-13 constituency.
+
+            Nanak is also a Presidium Member of the Awami League Central
+            Committee. Previously, he served as the State Minister for Local
+            Government, Rural Development and Co-operatives.
+
+            <span className="hidden lg:block mt-5">
+
+              <span className="text-2xl font-bold">
+                Early life:
+              </span>
+
+              <br />
+
+              Nanak was born on 14 January 1954 in Kshirad Mukherjee Lane
+              of North Alekanda in Barisal, East Bengal, Dominion of Pakistan.
+
+              His father, Maulvi Bazlur Rahman Serniabat, was an employee
+              at the Barisal Collectorate Office.
+
+              They belong to the Bengali Muslim Serniabat family, who are
+              direct descendants of Emperor Sher Shah Suri.
+
+              He has a bachelor's degree in art and law.
+
+            </span>
+
+          </p>
+
+        </div>
+
       </div>
+
     </div>
-   </div>
   );
 };
 
