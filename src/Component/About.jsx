@@ -97,7 +97,7 @@ const About = () => {
 
             {/* Right Image */}
             <img
-              className="h-96 w-full py-3 mt-6 rounded-[40px] object-cover lg:h-[700px] lg:w-[650px]"
+              className="h-[600px] w-full py-3 mt-6 rounded-3xl object-contain lg:h-[700px] lg:w-[650px]"
               src="/kabirnanak.webp"
               alt="jahangir kabir nanak"
             />
