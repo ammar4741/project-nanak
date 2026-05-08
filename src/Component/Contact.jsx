@@ -71,17 +71,17 @@ const Contact = () => {
         </div>
         <div className="text-xl font-semibold mt-6">
           <span className="text-2xl text-black underline underline-offset-8">Quick Link</span>
-          <div className="flex flex-col mt-2 gap-2 md:gap-1">
-            {["Home", "About", "Blog", "Contact"].map((item) => (
-              <a
-                key={item}
-                href={`/#${item.toLowerCase()}`}
-                className="text-black  hover:text-green-200 transition duration-300"
-              >
-                {item}
-              </a>
-            ))}
-          </div>
+         <div className="flex flex-col mt-2 gap-2 md:gap-1">
+  {["Home", "About", "Blog", "Contact"].map((item) => (
+    <a
+      key={item}
+      href={item === "Home" ? "/" : `#${item.toLowerCase()}`}
+      className="text-black hover:text-green-200 transition duration-300"
+    >
+      {item}
+    </a>
+  ))}
+</div>
         </div>
       </div>
     </div>

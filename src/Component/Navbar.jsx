@@ -17,7 +17,7 @@ const Navbar = () => {
       });
     }
 
-    // URL hash remove করবে
+    
     window.history.replaceState(null, "", " ");
   };
 
