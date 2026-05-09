@@ -55,6 +55,21 @@ const About = () => {
 
             </div>
 
+            {/* Premium Animated Pill Indicators */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2">
+              {images.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrent(index)}
+                  className={`transition-all duration-500 rounded-full ${
+                    current === index
+                      ? "w-8 h-2 bg-white"
+                      : "w-2 h-2 bg-white/50 hover:bg-white/80"
+                  }`}
+                ></button>
+              ))}
+            </div>
+
           </div>
 
         </div>
@@ -97,7 +112,7 @@ const About = () => {
 
             {/* Right Image */}
             <img
-              className="h-[600px] w-full py-3 mt-6 rounded-3xl object-contain lg:h-[700px] lg:w-[650px]"
+              className="h-[600px] w-full rounded-xl object-contain lg:h-[700px] lg:w-[650px]"
               src="/kabirnanak.webp"
               alt="jahangir kabir nanak"
             />
