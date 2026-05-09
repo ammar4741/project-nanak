@@ -1,4 +1,3 @@
-// Navbar.jsx
 import { useState } from "react";
 
 const Navbar = () => {
@@ -9,6 +8,15 @@ const Navbar = () => {
     setActive(item);
     setOpen(false);
 
+    if (item === "Home") {
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+
+      return;
+    }
+
     const section = document.getElementById(item.toLowerCase());
 
     if (section) {
@@ -17,14 +25,16 @@ const Navbar = () => {
       });
     }
 
-    
     window.history.replaceState(null, "", " ");
   };
 
   return (
-    <div id="home" className="navbar bg-[#FEFCF3] shadow-xl p-3 sticky top-0 z-50">
+    <nav
+      id="home"
+      className="navbar bg-[#FEFCF3]/90 backdrop-blur-md shadow-xl p-3 sticky top-0 z-50"
+    >
       <div className="flex justify-between items-center w-full md:justify-around text-xl font-semibold">
-
+        
         {/* Logo */}
         <div className="text-black">
           Adv. Jahangir Kabir Nanak
@@ -32,7 +42,8 @@ const Navbar = () => {
 
         {/* Hamburger Button */}
         <button
-          className="md:hidden text-2xl text-black"
+          aria-label="Open navigation menu"
+          className="md:hidden text-2xl text-black min-w-[44px] min-h-[44px]"
           onClick={() => setOpen(!open)}
         >
           ☰
@@ -49,8 +60,9 @@ const Navbar = () => {
           {["Home", "About", "Blog", "Contact"].map((item) => (
             <button
               key={item}
+              aria-label={`Go to ${item} section`}
               onClick={() => handleScroll(item)}
-              className={`relative group transition duration-300 text-left
+              className={`relative group transition duration-300 text-left min-h-[44px]
               ${active === item ? "text-green-500" : "text-gray-800"}`}
             >
               {item}
@@ -63,7 +75,7 @@ const Navbar = () => {
           ))}
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
