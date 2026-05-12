@@ -29,7 +29,7 @@ const Contact = () => {
         <div
           className="grid grid-cols-1
           md:grid-cols-2
-          lg:grid-cols-4
+          lg:grid-cols-3
           gap-12 lg:gap-10"
         >
           {/* LEFT INFO */}
@@ -65,7 +65,7 @@ const Contact = () => {
             </p>
 
             {/* SOCIAL */}
-            <div className="flex items-center gap-4 mt-8 sm:order-1">
+            <div className="flex items-center gap-4 mt-8">
               {/* FACEBOOK */}
               <a
                 href="https://www.facebook.com/share/1H357c361r/"
@@ -136,32 +136,8 @@ const Contact = () => {
             </div>
           </div>
 
-          {/* QUICK LINKS */}
-          <div className="lg:border-l lg:border-[#1b2233] lg:pl-10 sm:order-3">
-            <h3
-              className="text-2xl font-bold
-              text-[#d4af37] mb-6"
-            >
-              Quick Links
-            </h3>
-
-            <div className="flex flex-col gap-4">
-              {["Home", "About", "Blog", "Gallery", "Contact"].map((item) => (
-                <a
-                  key={item}
-                  href={item === "Home" ? "/" : `#${item.toLowerCase()}`}
-                  className="text-gray-300
-                    hover:text-[#d4af37]
-                    transition-all duration-300"
-                >
-                  {item}
-                </a>
-              ))}
-            </div>
-          </div>
-
           {/* CONTACT */}
-          <div className="lg:border-l lg:border-[#1b2233] lg:pl-10  sm:order-2">
+          <div className="order-2 lg:border-l lg:border-[#1b2233] lg:pl-10">
             <h3
               className="text-2xl font-bold
               text-[#d4af37] mb-6"
@@ -226,6 +202,30 @@ const Contact = () => {
 
                 <span>Kishoreganj, Bangladesh</span>
               </div>
+            </div>
+          </div>
+
+          {/* QUICK LINKS */}
+          <div className="order-3 lg:border-l lg:border-[#1b2233] lg:pl-10">
+            <h3
+              className="text-2xl font-bold
+              text-[#d4af37] mb-6"
+            >
+              Quick Links
+            </h3>
+
+            <div className="flex flex-col gap-4">
+              {["Home", "About", "Blog", "Gallery", "Contact"].map((item) => (
+                <a
+                  key={item}
+                  href={item === "Home" ? "/" : `#${item.toLowerCase()}`}
+                  className="text-gray-300
+                    hover:text-[#d4af37]
+                    transition-all duration-300"
+                >
+                  {item}
+                </a>
+              ))}
             </div>
           </div>
         </div>

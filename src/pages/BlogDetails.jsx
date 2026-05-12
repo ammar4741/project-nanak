@@ -7,8 +7,10 @@ const BlogDetails = () => {
 
   const post = posts.find((p) => p.id === id);
 
-  // SEO TITLE
+  // SEO TITLE + SCROLL TOP
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     if (post) {
       document.title = `${post.title} | Jahangir Kabir Nanak`;
     }
