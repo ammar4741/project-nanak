@@ -27,8 +27,8 @@ const About = () => {
   return (
     <>
       {/* HERO SECTION */}
-      <section
-        id="about"
+      <section id="about"
+        
         className="relative w-full min-h-screen overflow-hidden pt-[90px]"
       >
         {/* BACKGROUND IMAGES */}
@@ -46,7 +46,7 @@ const About = () => {
             <img
               src={image}
               alt="Jahangir Kabir Nanak"
-              className="w-full h-full object-contain object-center md:object-cover"
+              className="w-full h-full object-center object-cover"
             />
 
             {/* CINEMATIC OVERLAY */}
@@ -231,7 +231,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* PREMIUM ABOUT SECTION */}
+      {/* ABOUT SECTION */}
       <div className="bg-[#f5f1ea] py-16 lg:py-24">
 
         <div
