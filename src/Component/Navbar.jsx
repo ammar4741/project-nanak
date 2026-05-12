@@ -1,10 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { HiOutlineMenuAlt3, HiX } from "react-icons/hi";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("Home");
+  const [scrolled, setScrolled] = useState(false);
 
-  const handleScroll = (item) => {
+  // Scroll Effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+  // Smooth Scroll
+  const handleSection = (item) => {
     setActive(item);
     setOpen(false);
 
@@ -24,55 +40,126 @@ const Navbar = () => {
         behavior: "smooth",
       });
     }
-
-    window.history.replaceState(null, "", " ");
   };
+
+  const navItems = ["Home", "About", "Blog", "Gallery", "Contact"];
 
   return (
     <nav
-      id="home"
-      className="navbar bg-[#FEFCF3]/90 backdrop-blur-md shadow-xl p-3 sticky top-0 z-50"
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500
+      ${
+        scrolled
+          ? "bg-[#f3ede5]/95 backdrop-blur-xl shadow-xl py-3 border-b border-[#d6d0c7]"
+          : "bg-black/40 backdrop-blur-md py-5"
+      }`}
     >
-      <div className="flex justify-between items-center w-full md:justify-around text-xl font-semibold">
-        
-        {/* Logo */}
-        <div className="text-black">
-          Adv. Jahangir Kabir Nanak
-        </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10">
+        <div className="flex items-center justify-between">
 
-        {/* Hamburger Button */}
-        <button
-          aria-label="Open navigation menu"
-          className="md:hidden text-2xl text-black min-w-[44px] min-h-[44px]"
-          onClick={() => setOpen(!open)}
-        >
-          ☰
-        </button>
-
-        {/* Menu */}
-        <div
-          className={`absolute top-16 right-2 w-40 bg-orange-50 rounded-xl shadow-lg
-          flex flex-col gap-3 p-4
-          md:static md:flex md:flex-row md:w-auto md:bg-transparent
-          md:p-0 md:gap-4 md:shadow-none
-          ${open ? "block" : "hidden"} md:flex`}
-        >
-          {["Home", "About", "Blog", "Contact"].map((item) => (
-            <button
-              key={item}
-              aria-label={`Go to ${item} section`}
-              onClick={() => handleScroll(item)}
-              className={`relative group transition duration-300 text-left min-h-[44px]
-              ${active === item ? "text-green-500" : "text-gray-800"}`}
+          {/* Logo */}
+          <div
+            onClick={() => handleSection("Home")}
+            className="cursor-pointer"
+          >
+            <h1
+              className={`font-bold tracking-[1px] leading-tight transition-all duration-300
+              text-[17px] sm:text-[20px] lg:text-[24px]
+              ${
+                scrolled
+                  ? "text-[#111111]"
+                  : "text-white drop-shadow-[0_3px_15px_rgba(0,0,0,0.95)]"
+              }`}
             >
-              {item}
+              <span className="text-[#BE9823]">
+                Adv.
+              </span>{" "}
+              <span>
+                Jahangir Kabir Nanak
+              </span>
+            </h1>
+          </div>
 
-              <span
-                className={`absolute left-0 -bottom-1 h-0.5 bg-green-500 transition-all duration-300
-                ${active === item ? "w-full" : "w-0 group-hover:w-full"}`}
-              ></span>
-            </button>
-          ))}
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center gap-5 lg:gap-9">
+            {navItems.map((item) => (
+              <button
+                key={item}
+                onClick={() => handleSection(item)}
+                className={`relative group text-[14px] lg:text-[16px]
+                font-semibold tracking-wide transition-all duration-300
+                ${
+                  active === item
+                    ? "text-[#BE9823]"
+                    : scrolled
+                    ? "text-[#111111]"
+                    : "text-white"
+                }`}
+              >
+                {/* Text */}
+                <span
+                  className="text-xl transition-all duration-300
+                  group-hover:text-[#BE9823]
+                  group-hover:drop-shadow-[0_0_12px_rgba(0,217,255,0.9)]"
+                >
+                  {item}
+                </span>
+
+                {/* Active Line */}
+                <span
+                  className={`absolute left-0 -bottom-2 h-[2px] rounded-full
+                  bg-[#BE9823] transition-all duration-500
+                  ${
+                    active === item
+                      ? "w-full shadow-[0_0_12px_#00d9ff]"
+                      : "w-0 group-hover:w-full"
+                  }`}
+                ></span>
+              </button>
+            ))}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setOpen(!open)}
+            className={`md:hidden text-3xl transition-all duration-300
+            ${
+              scrolled
+                ? "text-[#111111]"
+                : "text-white drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]"
+            }`}
+          >
+            {open ? <HiX /> : <HiOutlineMenuAlt3 />}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden absolute top-full right-0 w-1/2 overflow-hidden
+        transition-all duration-500
+        ${
+          open
+            ? "max-h-[500px] opacity-100"
+            : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="bg-[#f3ede5]/95 backdrop-blur-2xl shadow-2xl border-t border-[#d6d0c7]">
+          <div className="flex flex-col gap-5 px-6 py-6">
+            {navItems.map((item) => (
+              <button
+                key={item}
+                onClick={() => handleSection(item)}
+                className={`text-left text-[17px] font-medium transition-all duration-300
+                ${
+                  active === item
+                    ? "text-[#BE9823]"
+                    : "text-[#111111] hover:text-[#BE9823]"
+                }`}
+              >
+                {item}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </nav>

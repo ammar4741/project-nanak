@@ -4,6 +4,7 @@ import Navbar from "./Component/Navbar";
 import About from "./Component/About";
 import Blog from "./pages/Blog";
 import BlogDetails from "./pages/BlogDetails";
+import Gallery from "./Component/Gallery"
 import Contact from "./Component/Contact";
 import { useEffect } from "react";
 
@@ -28,6 +29,10 @@ function HomePage() {
 
       <div id="blog">
         <Blog />
+      </div>
+
+      <div id="gallery">
+        <Gallery></Gallery>
       </div>
 
       <div id="contact">
