@@ -7,10 +7,11 @@ import {
   FaMapMarkerAlt,
 } from "react-icons/fa";
 
+import { FaXTwitter } from "react-icons/fa6";
+
 const Contact = () => {
   return (
     <footer className="bg-[#05070f] px-4 py-10">
-
       <div
         id="contact"
         className="max-w-7xl mx-auto
@@ -24,7 +25,6 @@ const Contact = () => {
         py-12
         shadow-[0_10px_40px_rgba(0,0,0,0.5)]"
       >
-
         {/* MAIN GRID */}
         <div
           className="grid grid-cols-1
@@ -32,17 +32,18 @@ const Contact = () => {
           lg:grid-cols-4
           gap-12 lg:gap-10"
         >
-
           {/* LEFT INFO */}
           <div>
-
             {/* LOGO */}
             <div className="flex items-center gap-4">
-
               <img
                 src="/kabirnanak.webp"
-                alt="Logo"
-                className="w-16 h-16 object-contain"
+                alt="Advocate Jahangir Kabir Nanak Logo"
+                width="64"
+                height="64"
+                loading="lazy"
+                decoding="async"
+                className="w-16 h-16 object-contain rounded-full"
               />
 
               <h2
@@ -59,16 +60,16 @@ const Contact = () => {
               className="text-gray-300
               leading-8 mt-6"
             >
-              Dedicated to the people of Bangladesh
-              and working for a prosperous,
-              developed and inclusive nation.
+              Dedicated to the people of Bangladesh and working for a
+              prosperous, developed and inclusive nation.
             </p>
 
             {/* SOCIAL */}
-            <div className="flex items-center gap-4 mt-8">
-
+            <div className="flex items-center gap-4 mt-8 sm:order-1">
+              {/* FACEBOOK */}
               <a
                 href="https://www.facebook.com/share/1H357c361r/"
+                aria-label="Facebook"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full
@@ -82,8 +83,10 @@ const Contact = () => {
                 <FaFacebookF />
               </a>
 
+              {/* YOUTUBE */}
               <a
                 href="https://www.youtube.com/channel/UCKSUFXMerEe8qUsjOqOHLXQ"
+                aria-label="YouTube"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full
@@ -97,8 +100,10 @@ const Contact = () => {
                 <FaYoutube />
               </a>
 
+              {/* LINKEDIN */}
               <a
                 href="https://www.linkedin.com/in/advjknanak/"
+                aria-label="LinkedIn"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-12 h-12 rounded-full
@@ -112,12 +117,27 @@ const Contact = () => {
                 <FaLinkedinIn />
               </a>
 
+              {/* X / TWITTER */}
+              <a
+                href="https://x.com/AdvJKNanak"
+                aria-label="X Twitter"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full
+                border border-[#d4af37]/40
+                text-[#d4af37]
+                flex items-center justify-center
+                hover:bg-[#d4af37]
+                hover:text-black
+                transition-all duration-300"
+              >
+                <FaXTwitter />
+              </a>
             </div>
           </div>
 
           {/* QUICK LINKS */}
-          <div className="lg:border-l lg:border-[#1b2233] lg:pl-10">
-
+          <div className="lg:border-l lg:border-[#1b2233] lg:pl-10 sm:order-3">
             <h3
               className="text-2xl font-bold
               text-[#d4af37] mb-6"
@@ -126,33 +146,22 @@ const Contact = () => {
             </h3>
 
             <div className="flex flex-col gap-4">
-
-              {["Home", "About", "Blog", "Gallery", "Contact"].map(
-                (item) => (
-                  <a
-                    key={item}
-                    href={
-                      item === "Home"
-                        ? "/"
-                        : `#${item.toLowerCase()}`
-                    }
-                    className="text-gray-300
+              {["Home", "About", "Blog", "Gallery", "Contact"].map((item) => (
+                <a
+                  key={item}
+                  href={item === "Home" ? "/" : `#${item.toLowerCase()}`}
+                  className="text-gray-300
                     hover:text-[#d4af37]
                     transition-all duration-300"
-                  >
-                    {item}
-                  </a>
-                )
-              )}
-
+                >
+                  {item}
+                </a>
+              ))}
             </div>
           </div>
 
-         
-
           {/* CONTACT */}
-          <div className="lg:border-l lg:border-[#1b2233] lg:pl-10">
-
+          <div className="lg:border-l lg:border-[#1b2233] lg:pl-10  sm:order-2">
             <h3
               className="text-2xl font-bold
               text-[#d4af37] mb-6"
@@ -161,7 +170,6 @@ const Contact = () => {
             </h3>
 
             <div className="space-y-5">
-
               {/* PHONE 1 */}
               <a
                 href="tel:+8801711527075"
@@ -175,9 +183,7 @@ const Contact = () => {
                 <span>
                   +88 01711-527075
                   <br />
-                  <span className="text-sm text-gray-500">
-                    (Bangladesh)
-                  </span>
+                  <span className="text-sm text-gray-500">(Bangladesh)</span>
                 </span>
               </a>
 
@@ -194,15 +200,13 @@ const Contact = () => {
                 <span>
                   +91 6296341082
                   <br />
-                  <span className="text-sm text-gray-500">
-                    (India)
-                  </span>
+                  <span className="text-sm text-gray-500">(India)</span>
                 </span>
               </a>
 
               {/* EMAIL */}
               <a
-                href="mailto:jknanak.bd.al@gmail.com"
+                href="mailto:jahangirkabirnanakofficial@gmail.com"
                 className="flex items-start gap-4
                 text-gray-300
                 hover:text-[#d4af37]
@@ -210,9 +214,7 @@ const Contact = () => {
               >
                 <FaEnvelope className="mt-1 text-[#d4af37]" />
 
-                <span>
-                  jknanak.bd.al@gmail.com
-                </span>
+                <span>jahangirkabirnanakofficial@gmail.com</span>
               </a>
 
               {/* LOCATION */}
@@ -222,14 +224,10 @@ const Contact = () => {
               >
                 <FaMapMarkerAlt className="mt-1 text-[#d4af37]" />
 
-                <span>
-                  Kishoreganj, Bangladesh
-                </span>
+                <span>Kishoreganj, Bangladesh</span>
               </div>
-
             </div>
           </div>
-
         </div>
 
         {/* BOTTOM */}
@@ -237,14 +235,11 @@ const Contact = () => {
           className="border-t border-[#1b2233]
           mt-12 pt-6 text-center"
         >
-
           <p className="text-gray-400 text-sm md:text-base">
-            © {new Date().getFullYear()} Jahangir Kabir Nanak.
-            All Rights Reserved.
+            © {new Date().getFullYear()} Jahangir Kabir Nanak. All Rights
+            Reserved.
           </p>
-
         </div>
-
       </div>
     </footer>
   );

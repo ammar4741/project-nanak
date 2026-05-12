@@ -15,12 +15,12 @@ const Blog = () => {
         </h2>
 
         {/* BLOG GRID */}
-        <div className="p-1 md:grid grid-cols-2 gap-5 lg:grid-cols-3 px-2">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 p-2">
 
           {(showAll ? posts : posts.slice(0, 4)).map((post) => (
             <article
               key={post.id}
-              className="mb-4 bg-gray-100 rounded-xl shadow-xl shadow-gray-400 p-2"
+              className="mb-4 bg-gray-100 rounded-xl shadow-md shadow-gray-400 p-2"
             >
 
               <h3 className="font-semibold text-lg">

@@ -1,4 +1,5 @@
-import { useParams } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, useParams } from "react-router-dom";
 import posts from "../Data/posts";
 
 const BlogDetails = () => {
@@ -6,30 +7,46 @@ const BlogDetails = () => {
 
   const post = posts.find((p) => p.id === id);
 
+  // SEO TITLE
+  useEffect(() => {
+    if (post) {
+      document.title = `${post.title} | Jahangir Kabir Nanak`;
+    }
+  }, [post]);
+
+  // NOT FOUND
   if (!post)
     return (
-      <div className="min-h-screen flex items-center justify-center text-2xl font-bold">
+      <main
+        role="alert"
+        className="min-h-screen flex items-center justify-center text-2xl font-bold"
+      >
         Post not found
-      </div>
+      </main>
     );
 
   return (
-    <div className="bg-[#F5F1EA] min-h-screen pt-[120px] pb-20 px-4">
-
+    <main className="bg-[#F5F1EA] min-h-screen pt-[120px] pb-20 px-4">
+      
       {/* CONTAINER */}
-      <div
+      <article
         className="max-w-5xl mx-auto
         bg-white
         rounded-3xl
-        shadow-[0_10px_40px_rgba(0,0,0,0.08)]
+        shadow-lg
         overflow-hidden"
       >
-
+        
         {/* IMAGE */}
         {post.image && (
           <img
             src={post.image}
             alt={post.title}
+            width="1200"
+            height="700"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
             className="w-full max-h-[500px] object-cover"
           />
         )}
@@ -39,6 +56,7 @@ const BlogDetails = () => {
           <div className="w-full">
             <video
               controls
+              preload="metadata"
               className="w-full max-h-[500px] object-cover"
             >
               <source src={post.video} type="video/mp4" />
@@ -48,7 +66,7 @@ const BlogDetails = () => {
 
         {/* CONTENT */}
         <div className="p-6 md:p-10">
-
+          
           {/* CATEGORY */}
           <p
             className="uppercase tracking-[3px]
@@ -76,20 +94,25 @@ const BlogDetails = () => {
           <div className="w-full h-[1px] bg-gray-200 my-8"></div>
 
           {/* CONTENT */}
-          <div
+          <section
+            aria-label="Blog content"
             className="text-gray-700
             leading-8
             text-base md:text-lg
             whitespace-pre-line"
           >
             {post.content}
-          </div>
+          </section>
 
           {/* EXTRA IMAGE */}
           {post.extraImage && (
             <img
               src={post.extraImage}
               alt={post.title}
+              width="1200"
+              height="700"
+              loading="lazy"
+              decoding="async"
               className="w-full rounded-2xl my-10 object-cover"
             />
           )}
@@ -99,6 +122,7 @@ const BlogDetails = () => {
             <div className="my-10">
               <video
                 controls
+                preload="metadata"
                 className="w-full rounded-2xl"
               >
                 <source
@@ -110,8 +134,9 @@ const BlogDetails = () => {
           )}
 
           {/* BACK BUTTON */}
-          <a
-            href="/#blog"
+          <Link
+            to="/#blog"
+            aria-label="Back to blog page"
             className="inline-flex items-center
             mt-10
             bg-[#c8a96b]
@@ -120,15 +145,15 @@ const BlogDetails = () => {
             font-semibold
             px-7 py-3
             rounded-xl
-            transition-all duration-300
-            shadow-lg hover:scale-105"
+            transition-colors duration-300
+            shadow-lg"
           >
             ← Back to Blog
-          </a>
+          </Link>
 
         </div>
-      </div>
-    </div>
+      </article>
+    </main>
   );
 };
 

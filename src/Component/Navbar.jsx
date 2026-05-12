@@ -8,8 +8,17 @@ const Navbar = () => {
 
   // Scroll Effect
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setScrolled(window.scrollY > 50);
+          ticking = false;
+        });
+
+        ticking = true;
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -46,10 +55,12 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500
+      role="navigation"
+      aria-label="Main navigation"
+      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-500
       ${
         scrolled
-          ? "bg-[#f3ede5]/95 backdrop-blur-xl shadow-xl py-3 border-b border-[#d6d0c7]"
+          ? "bg-[#f3ede5]/95 backdrop-blur-md shadow-xl py-3 border-b border-[#d6d0c7]"
           : "bg-black/40 backdrop-blur-md py-5"
       }`}
     >
@@ -57,12 +68,14 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
 
           {/* Logo */}
-          <div
+          <button
+            type="button"
+            aria-label="Go to Home section"
             onClick={() => handleSection("Home")}
             className="cursor-pointer"
           >
             <h1
-              className={`font-bold tracking-[1px] leading-tight transition-all duration-300
+              className={`font-bold tracking-[1px] leading-tight transition-colors duration-300
               text-[17px] sm:text-[20px] lg:text-[24px]
               ${
                 scrolled
@@ -77,16 +90,18 @@ const Navbar = () => {
                 Jahangir Kabir Nanak
               </span>
             </h1>
-          </div>
+          </button>
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-5 lg:gap-9">
             {navItems.map((item) => (
               <button
                 key={item}
+                type="button"
+                aria-label={`Navigate to ${item}`}
                 onClick={() => handleSection(item)}
                 className={`relative group text-[14px] lg:text-[16px]
-                font-semibold tracking-wide transition-all duration-300
+                font-semibold tracking-wide transition-colors duration-300
                 ${
                   active === item
                     ? "text-[#BE9823]"
@@ -97,9 +112,8 @@ const Navbar = () => {
               >
                 {/* Text */}
                 <span
-                  className="text-xl transition-all duration-300
-                  group-hover:text-[#BE9823]
-                  group-hover:drop-shadow-[0_0_12px_rgba(0,217,255,0.9)]"
+                  className="text-xl transition-colors duration-300
+                  group-hover:text-[#BE9823]"
                 >
                   {item}
                 </span>
@@ -110,7 +124,7 @@ const Navbar = () => {
                   bg-[#BE9823] transition-all duration-500
                   ${
                     active === item
-                      ? "w-full shadow-[0_0_12px_#00d9ff]"
+                      ? "w-full"
                       : "w-0 group-hover:w-full"
                   }`}
                 ></span>
@@ -120,8 +134,11 @@ const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
+            aria-label="Toggle navigation menu"
+            aria-expanded={open}
             onClick={() => setOpen(!open)}
-            className={`md:hidden text-3xl transition-all duration-300
+            className={`md:hidden text-3xl transition-colors duration-300
             ${
               scrolled
                 ? "text-[#111111]"
@@ -139,17 +156,19 @@ const Navbar = () => {
         transition-all duration-500
         ${
           open
-            ? "max-h-[500px] opacity-100"
-            : "max-h-0 opacity-0"
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-2 pointer-events-none"
         }`}
       >
-        <div className="bg-[#f3ede5]/95 backdrop-blur-2xl shadow-2xl border-t border-[#d6d0c7]">
+        <div className="bg-[#f3ede5]/95 backdrop-blur-md shadow-2xl border-t border-[#d6d0c7]">
           <div className="flex flex-col gap-5 px-6 py-6">
             {navItems.map((item) => (
               <button
                 key={item}
+                type="button"
+                aria-label={`Navigate to ${item}`}
                 onClick={() => handleSection(item)}
-                className={`text-left text-[17px] font-medium transition-all duration-300
+                className={`text-left text-[17px] font-medium transition-colors duration-300
                 ${
                   active === item
                     ? "text-[#BE9823]"

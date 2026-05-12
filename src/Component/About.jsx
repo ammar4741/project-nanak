@@ -27,8 +27,8 @@ const About = () => {
   return (
     <>
       {/* HERO SECTION */}
-      <section id="about"
-        
+      <section
+        id="about"
         className="relative w-full min-h-screen overflow-hidden pt-[90px]"
       >
         {/* BACKGROUND IMAGES */}
@@ -46,6 +46,11 @@ const About = () => {
             <img
               src={image}
               alt="Jahangir Kabir Nanak"
+              width="1600"
+              height="900"
+              fetchPriority={current === index ? "high" : "low"}
+              loading={current === index ? "eager" : "lazy"}
+              decoding="async"
               className="w-full h-full object-center object-cover"
             />
 
@@ -60,12 +65,9 @@ const About = () => {
         {/* HERO CONTENT */}
         <div className="relative z-20 flex items-center h-full">
           <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full">
-
             <div className="mt-12 grid lg:grid-cols-2 items-center gap-18">
-
               {/* LEFT SIDE */}
               <div className="text-white">
-
                 {/* SMALL TITLE */}
                 <p
                   className="uppercase tracking-[6px]
@@ -97,30 +99,10 @@ const About = () => {
                     Government of The People's Republic of Bangladesh
                   </p>
                 </div>
-
-                {/* BUTTON */}
-                <div className="mt-10">
-                  <a
-                    href="https://en.wikipedia.org/wiki/Jahangir_Kabir_Nanak"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center
-                    bg-[#d4af37]
-                    hover:bg-[#be9823]
-                    text-black font-semibold
-                    px-8 py-4 rounded-xl
-                    transition-all duration-300
-                    shadow-[0_10px_35px_rgba(212,175,55,0.4)]
-                    hover:scale-105"
-                  >
-                    Explore More
-                  </a>
-                </div>
               </div>
 
               {/* DESKTOP GLASS CARD */}
               <div className="hidden lg:flex justify-end">
-
                 <div
                   className="w-[390px]
                   rounded-3xl
@@ -130,10 +112,8 @@ const About = () => {
                   shadow-[0_10px_45px_rgba(0,0,0,0.45)]
                   p-7 space-y-6"
                 >
-
                   {/* ITEM */}
                   <div className="flex items-start gap-4 border-b border-white/10 pb-5">
-
                     <div
                       className="w-14 h-14 rounded-2xl
                       bg-[#d4af37]/15
@@ -157,7 +137,6 @@ const About = () => {
 
                   {/* ITEM */}
                   <div className="flex items-start gap-4 border-b border-white/10 pb-5">
-
                     <div
                       className="w-14 h-14 rounded-2xl
                       bg-[#d4af37]/15
@@ -181,7 +160,6 @@ const About = () => {
 
                   {/* ITEM */}
                   <div className="flex items-start gap-4">
-
                     <div
                       className="w-14 h-14 rounded-2xl
                       bg-[#d4af37]/15
@@ -202,10 +180,8 @@ const About = () => {
                       </p>
                     </div>
                   </div>
-
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -233,7 +209,6 @@ const About = () => {
 
       {/* ABOUT SECTION */}
       <div className="bg-[#f5f1ea] py-16 lg:py-24">
-
         <div
           className="max-w-7xl mx-auto
           px-5 lg:px-10
@@ -241,10 +216,8 @@ const About = () => {
           gap-10 lg:gap-14
           items-center"
         >
-
           {/* INTRODUCTION */}
           <div className="order-1">
-
             <h2
               className="text-3xl md:text-4xl
               font-bold text-[#1a1a1a]
@@ -255,54 +228,31 @@ const About = () => {
             </h2>
 
             <div className="mt-6 space-y-5">
-
               <p className="text-gray-700 text-xl leading-8">
-                <span className="font-bold">
-                  Jahangir Kabir Nanak
-                </span>{" "}
-                (born 14 January 1954) is a Bangladesh Awami League
-                politician. He was a Minister of Textiles and Jute and
-                a former Member of Parliament representing the
-                Dhaka-13 constituency.
+                <span className="font-bold">Jahangir Kabir Nanak</span> (born 14
+                January 1954) is a Bangladesh Awami League politician. He was a
+                Minister of Textiles and Jute and a former Member of Parliament
+                representing the Dhaka-13 constituency.
               </p>
 
               <p className="text-gray-700 text-xl leading-8">
-                Nanak is also a Presidium Member of the Awami League
-                Central Committee. Previously, he served as the State
-                Minister for Local Government, Rural Development and
-                Co-operatives.
+                Nanak is also a Presidium Member of the Awami League Central
+                Committee. Previously, he served as the State Minister for Local
+                Government, Rural Development and Co-operatives.
               </p>
-
             </div>
-
-            {/* BUTTON */}
-            <a
-              href="https://en.wikipedia.org/wiki/Jahangir_Kabir_Nanak"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block mt-8
-              bg-[#c8a96b]
-              hover:bg-[#b89253]
-              text-white font-semibold
-              px-7 py-3 rounded-xl
-              transition-all duration-300
-              shadow-lg hover:scale-105"
-            >
-              Read More About Me
-            </a>
           </div>
 
           {/* IMAGE */}
-          <div
-            className="order-2 flex justify-center"
-          >
+          <div className="order-2 flex justify-center">
             <img
               src="/kabirnanak.webp"
               alt="Jahangir Kabir Nanak"
-              className="w-full max-w-[330px]
-              md:max-w-[420px]
-              rounded-3xl
-              shadow-[0_15px_40px_rgba(0,0,0,0.12)]"
+              width="420"
+              height="520"
+              loading="lazy"
+              decoding="async"
+              className="w-full max-w-[330px] md:max-w-[420px] rounded-3xl shadow-[0_15px_40px_rgba(0,0,0,0.12)]"
             />
           </div>
 
@@ -315,10 +265,8 @@ const About = () => {
             shadow-[0_10px_30px_rgba(0,0,0,0.08)]
             p-7 space-y-6"
           >
-
             {/* ITEM */}
             <div className="flex items-start gap-4 border-b border-[#e8dfd1] pb-5">
-
               <div
                 className="w-14 h-14 rounded-2xl
                 bg-[#c8a96b]/10
@@ -342,7 +290,6 @@ const About = () => {
 
             {/* ITEM */}
             <div className="flex items-start gap-4 border-b border-[#e8dfd1] pb-5">
-
               <div
                 className="w-14 h-14 rounded-2xl
                 bg-[#c8a96b]/10
@@ -354,19 +301,14 @@ const About = () => {
               </div>
 
               <div>
-                <h3 className="text-[#1a1a1a] text-lg font-bold">
-                  MP
-                </h3>
+                <h3 className="text-[#1a1a1a] text-lg font-bold">MP</h3>
 
-                <p className="text-gray-600 mt-1">
-                  Dhaka-13 Constituency
-                </p>
+                <p className="text-gray-600 mt-1">Dhaka-13 Constituency</p>
               </div>
             </div>
 
             {/* ITEM */}
             <div className="flex items-start gap-4">
-
               <div
                 className="w-14 h-14 rounded-2xl
                 bg-[#c8a96b]/10
@@ -382,407 +324,342 @@ const About = () => {
                   Presidium Member
                 </h3>
 
-                <p className="text-gray-600 mt-1">
-                  Awami League
-                </p>
+                <p className="text-gray-600 mt-1">Awami League</p>
               </div>
             </div>
-
           </div>
-
         </div>
       </div>
       {/* TIMELINE + ACHIEVEMENTS SECTION */}
-<div className="bg-[#f5f1ea]">
-
-  {/* TIMELINE */}
-  <section className="pb-8 lg:py-24 overflow-hidden">
-
-    {/* TOP TITLE */}
-    <div className="text-center mb-16">
-
-      <h2
-        className="text-3xl underline underline-offset-8 md:text-5xl
+      <div className="bg-[#f5f1ea]">
+        {/* TIMELINE */}
+        <section className="pb-8 lg:py-24 overflow-hidden">
+          {/* TOP TITLE */}
+          <div className="text-center mb-16">
+            <h2
+              className="text-3xl underline underline-offset-8 md:text-5xl
         font-bold text-[#1a1a1a] 
         mt-5"
-      >
-        Journey of Leadership
-      </h2>
-    </div>
+            >
+              Journey of Leadership
+            </h2>
+          </div>
 
-    {/* TIMELINE */}
-    <div className="max-w-7xl mx-auto px-5">
-
-      {/* DESKTOP */}
-      <div className="hidden lg:block relative">
-
-        {/* LINE */}
-        <div
-          className="absolute top-8 left-0
+          {/* TIMELINE */}
+          <div className="max-w-7xl mx-auto px-5">
+            {/* DESKTOP */}
+            <div className="hidden lg:block relative">
+              {/* LINE */}
+              <div
+                className="absolute top-8 left-0
           w-full h-[3px]
           bg-[#d8c4a0]"
-        ></div>
+              ></div>
 
-        <div className="grid grid-cols-5 gap-10 relative z-10">
-
-          {/* ITEM */}
-          <div className="text-center">
-            <div
-              className="w-16 h-16 mx-auto
+              <div className="grid grid-cols-5 gap-10 relative z-10">
+                {/* ITEM */}
+                <div className="text-center">
+                  <div
+                    className="w-16 h-16 mx-auto
               rounded-full
               bg-[#c8a96b]
               text-white
               flex items-center justify-center
               text-2xl
               shadow-lg"
-            >
-              ✦
-            </div>
+                  >
+                    ✦
+                  </div>
 
-            <h3 className="mt-6 text-2xl font-bold text-[#1a1a1a]">
-              1954
-            </h3>
+                  <h3 className="mt-6 text-2xl font-bold text-[#1a1a1a]">
+                    1954
+                  </h3>
 
-            <p className="mt-3 text-gray-700 leading-7">
-              Born in Kishoreganj,
-              Bangladesh
-            </p>
-          </div>
+                  <p className="mt-3 text-gray-700 leading-7">
+                    Born in Kishoreganj, Bangladesh
+                  </p>
+                </div>
 
-          {/* ITEM */}
-          <div className="text-center">
-            <div
-              className="w-16 h-16 mx-auto
+                {/* ITEM */}
+                <div className="text-center">
+                  <div
+                    className="w-16 h-16 mx-auto
               rounded-full
               bg-[#c8a96b]
               text-white
               flex items-center justify-center
               text-2xl
               shadow-lg"
-            >
-              ✦
-            </div>
+                  >
+                    ✦
+                  </div>
 
-            <h3 className="mt-6 text-2xl font-bold text-[#1a1a1a]">
-              1996
-            </h3>
+                  <h3 className="mt-6 text-2xl font-bold text-[#1a1a1a]">
+                    1996
+                  </h3>
 
-            <p className="mt-3 text-gray-700 leading-7">
-              Elected as Member of
-              Parliament (Dhaka-13)
-            </p>
-          </div>
+                  <p className="mt-3 text-gray-700 leading-7">
+                    Elected as Member of Parliament (Dhaka-13)
+                  </p>
+                </div>
 
-          {/* ITEM */}
-          <div className="text-center">
-            <div
-              className="w-16 h-16 mx-auto
+                {/* ITEM */}
+                <div className="text-center">
+                  <div
+                    className="w-16 h-16 mx-auto
               rounded-full
               bg-[#c8a96b]
               text-white
               flex items-center justify-center
               text-2xl
               shadow-lg"
-            >
-              ✦
-            </div>
+                  >
+                    ✦
+                  </div>
 
-            <h3 className="mt-6 text-2xl font-bold text-[#1a1a1a]">
-              2009
-            </h3>
+                  <h3 className="mt-6 text-2xl font-bold text-[#1a1a1a]">
+                    2009
+                  </h3>
 
-            <p className="mt-3 text-gray-700 leading-7">
-              Appointed as Minister
-              of Textiles & Jute
-            </p>
-          </div>
+                  <p className="mt-3 text-gray-700 leading-7">
+                    Appointed as Minister of Textiles & Jute
+                  </p>
+                </div>
 
-          {/* ITEM */}
-          <div className="text-center">
-            <div
-              className="w-16 h-16 mx-auto
+                {/* ITEM */}
+                <div className="text-center">
+                  <div
+                    className="w-16 h-16 mx-auto
               rounded-full
               bg-[#c8a96b]
               text-white
               flex items-center justify-center
               text-2xl
               shadow-lg"
-            >
-              ✦
-            </div>
+                  >
+                    ✦
+                  </div>
 
-            <h3 className="mt-6 text-2xl font-bold text-[#1a1a1a]">
-              2014
-            </h3>
+                  <h3 className="mt-6 text-2xl font-bold text-[#1a1a1a]">
+                    2014
+                  </h3>
 
-            <p className="mt-3 text-gray-700 leading-7">
-              State Minister for Local
-              Government, RD & Co-ops
-            </p>
-          </div>
+                  <p className="mt-3 text-gray-700 leading-7">
+                    State Minister for Local Government, RD & Co-ops
+                  </p>
+                </div>
 
-          {/* ITEM */}
-          <div className="text-center">
-            <div
-              className="w-16 h-16 mx-auto
+                {/* ITEM */}
+                <div className="text-center">
+                  <div
+                    className="w-16 h-16 mx-auto
               rounded-full
               bg-[#c8a96b]
               text-white
               flex items-center justify-center
               text-2xl
               shadow-lg"
-            >
-              ✦
+                  >
+                    ✦
+                  </div>
+
+                  <h3 className="mt-6 text-2xl font-bold text-[#1a1a1a]">
+                    Present
+                  </h3>
+
+                  <p className="mt-3 text-gray-700 leading-7">
+                    Presidium Member, Awami League
+                  </p>
+                </div>
+              </div>
             </div>
 
-            <h3 className="mt-6 text-2xl font-bold text-[#1a1a1a]">
-              Present
-            </h3>
-
-            <p className="mt-3 text-gray-700 leading-7">
-              Presidium Member,
-              Awami League
-            </p>
-          </div>
-
-        </div>
-      </div>
-
-      {/* MOBILE + TABLET */}
-      <div className="lg:hidden relative">
-
-        {/* LINE */}
-        <div
-          className="absolute left-7 top-0
+            {/* MOBILE + TABLET */}
+            <div className="lg:hidden relative">
+              {/* LINE */}
+              <div
+                className="absolute left-7 top-0
           w-[3px] h-full
           bg-[#d8c4a0]"
-        ></div>
+              ></div>
 
-        <div className="space-y-12">
-
-          {/* ITEM */}
-          <div className="flex gap-6 relative z-10">
-
-            <div
-              className="w-14 h-14 min-w-[56px]
+              <div className="space-y-12">
+                {/* ITEM */}
+                <div className="flex gap-6 relative z-10">
+                  <div
+                    className="w-14 h-14 min-w-[56px]
               rounded-full
               bg-[#c8a96b]
               text-white
               flex items-center justify-center
               text-xl shadow-lg"
-            >
-              ✦
-            </div>
+                  >
+                    ✦
+                  </div>
 
-            <div>
-              <h3 className="text-2xl font-bold text-[#1a1a1a]">
-                1954
-              </h3>
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#1a1a1a]">1954</h3>
 
-              <p className="mt-2 text-gray-700 leading-7">
-                Born in Kishoreganj, Bangladesh
-              </p>
-            </div>
-          </div>
+                    <p className="mt-2 text-gray-700 leading-7">
+                      Born in Kishoreganj, Bangladesh
+                    </p>
+                  </div>
+                </div>
 
-          {/* ITEM */}
-          <div className="flex gap-6 relative z-10">
-
-            <div
-              className="w-14 h-14 min-w-[56px]
+                {/* ITEM */}
+                <div className="flex gap-6 relative z-10">
+                  <div
+                    className="w-14 h-14 min-w-[56px]
               rounded-full
               bg-[#c8a96b]
               text-white
               flex items-center justify-center
               text-xl shadow-lg"
-            >
-              ✦
-            </div>
+                  >
+                    ✦
+                  </div>
 
-            <div>
-              <h3 className="text-2xl font-bold text-[#1a1a1a]">
-                1996
-              </h3>
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#1a1a1a]">1996</h3>
 
-              <p className="mt-2 text-gray-700 leading-7">
-                Elected as Member of Parliament (Dhaka-13)
-              </p>
-            </div>
-          </div>
+                    <p className="mt-2 text-gray-700 leading-7">
+                      Elected as Member of Parliament (Dhaka-13)
+                    </p>
+                  </div>
+                </div>
 
-          {/* ITEM */}
-          <div className="flex gap-6 relative z-10">
-
-            <div
-              className="w-14 h-14 min-w-[56px]
+                {/* ITEM */}
+                <div className="flex gap-6 relative z-10">
+                  <div
+                    className="w-14 h-14 min-w-[56px]
               rounded-full
               bg-[#c8a96b]
               text-white
               flex items-center justify-center
               text-xl shadow-lg"
-            >
-              ✦
-            </div>
+                  >
+                    ✦
+                  </div>
 
-            <div>
-              <h3 className="text-2xl font-bold text-[#1a1a1a]">
-                2009
-              </h3>
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#1a1a1a]">2009</h3>
 
-              <p className="mt-2 text-gray-700 leading-7">
-                Appointed as Minister of Textiles & Jute
-              </p>
-            </div>
-          </div>
+                    <p className="mt-2 text-gray-700 leading-7">
+                      Appointed as Minister of Textiles & Jute
+                    </p>
+                  </div>
+                </div>
 
-          {/* ITEM */}
-          <div className="flex gap-6 relative z-10">
-
-            <div
-              className="w-14 h-14 min-w-[56px]
+                {/* ITEM */}
+                <div className="flex gap-6 relative z-10">
+                  <div
+                    className="w-14 h-14 min-w-[56px]
               rounded-full
               bg-[#c8a96b]
               text-white
               flex items-center justify-center
               text-xl shadow-lg"
-            >
-              ✦
-            </div>
+                  >
+                    ✦
+                  </div>
 
-            <div>
-              <h3 className="text-2xl font-bold text-[#1a1a1a]">
-                2014
-              </h3>
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#1a1a1a]">2014</h3>
 
-              <p className="mt-2 text-gray-700 leading-7">
-                State Minister for Local Government,
-                RD & Co-ops
-              </p>
-            </div>
-          </div>
+                    <p className="mt-2 text-gray-700 leading-7">
+                      State Minister for Local Government, RD & Co-ops
+                    </p>
+                  </div>
+                </div>
 
-          {/* ITEM */}
-          <div className="flex gap-6 relative z-10">
-
-            <div
-              className="w-14 h-14 min-w-[56px]
+                {/* ITEM */}
+                <div className="flex gap-6 relative z-10">
+                  <div
+                    className="w-14 h-14 min-w-[56px]
               rounded-full
               bg-[#c8a96b]
               text-white
               flex items-center justify-center
               text-xl shadow-lg"
-            >
-              ✦
-            </div>
+                  >
+                    ✦
+                  </div>
 
-            <div>
-              <h3 className="text-2xl font-bold text-[#1a1a1a]">
-                Present
-              </h3>
+                  <div>
+                    <h3 className="text-2xl font-bold text-[#1a1a1a]">
+                      Present
+                    </h3>
 
-              <p className="mt-2 text-gray-700 leading-7">
-                Presidium Member, Awami League
-              </p>
+                    <p className="mt-2 text-gray-700 leading-7">
+                      Presidium Member, Awami League
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-        </div>
-      </div>
+        {/* ACHIEVEMENTS SECTION */}
+        <p className="uppercase text-[#7c1d33] text-center font-bold text-xl pb-6 underline underline-offset-8">
+          ACHIEVEMENTS & STATISTICS
+        </p>
 
-    </div>
-  </section>
-
-  {/* ACHIEVEMENTS SECTION */}
-   <p
-        className="uppercase text-[#7c1d33] text-center font-bold text-xl pb-6 underline underline-offset-8"
-      >
-        ACHIEVEMENTS & STATISTICS
-      </p>
-  
-  <section
-    className="bg-gradient-to-r
+        <section
+          className="bg-gradient-to-r
     from-[#05070f]
     via-[#0a1224]
     to-[#05070f]
     py-6 lg:py-20"
-  >
-    
-
-    <div
-      className="max-w-7xl mx-auto
+        >
+          <div
+            className="max-w-7xl mx-auto
       px-5 lg:px-10
       grid grid-cols-2 lg:grid-cols-4
       gap-10 text-center"
-    >
+          >
+            {/* ITEM */}
+            <div>
+              <div className="text-[#d4af37] text-5xl mb-5">🏅</div>
 
-      {/* ITEM */}
-      <div>
-        <div className="text-[#d4af37] text-5xl mb-5">
-          🏅
-        </div>
+              <h3 className="text-4xl font-bold text-[#d4af37]">50+</h3>
 
-        <h3 className="text-4xl font-bold text-[#d4af37]">
-          50+
-        </h3>
+              <p className="text-white mt-4 leading-7">
+                Years of Public Service
+              </p>
+            </div>
 
-        <p className="text-white mt-4 leading-7">
-          Years of Public
-          Service
-        </p>
+            {/* ITEM */}
+            <div>
+              <div className="text-[#d4af37] text-5xl mb-5">🏛️</div>
+
+              <h3 className="text-4xl font-bold text-[#d4af37]">10+</h3>
+
+              <p className="text-white mt-4 leading-7">
+                Ministries & Responsibilities
+              </p>
+            </div>
+
+            {/* ITEM */}
+            <div>
+              <div className="text-[#d4af37] text-5xl mb-5">👥</div>
+
+              <h3 className="text-4xl font-bold text-[#d4af37]">100+</h3>
+
+              <p className="text-white mt-4 leading-7">Development Projects</p>
+            </div>
+
+            {/* ITEM */}
+            <div>
+              <div className="text-[#d4af37] text-5xl mb-5">🌍</div>
+
+              <h3 className="text-4xl font-bold text-[#d4af37]">Millions</h3>
+
+              <p className="text-white mt-4 leading-7">People Served</p>
+            </div>
+          </div>
+        </section>
       </div>
-
-      {/* ITEM */}
-      <div>
-        <div className="text-[#d4af37] text-5xl mb-5">
-          🏛️
-        </div>
-
-        <h3 className="text-4xl font-bold text-[#d4af37]">
-          10+
-        </h3>
-
-        <p className="text-white mt-4 leading-7">
-          Ministries &
-          Responsibilities
-        </p>
-      </div>
-
-      {/* ITEM */}
-      <div>
-        <div className="text-[#d4af37] text-5xl mb-5">
-          👥
-        </div>
-
-        <h3 className="text-4xl font-bold text-[#d4af37]">
-          100+
-        </h3>
-
-        <p className="text-white mt-4 leading-7">
-          Development
-          Projects
-        </p>
-      </div>
-
-      {/* ITEM */}
-      <div>
-        <div className="text-[#d4af37] text-5xl mb-5">
-          🌍
-        </div>
-
-        <h3 className="text-4xl font-bold text-[#d4af37]">
-          Millions
-        </h3>
-
-        <p className="text-white mt-4 leading-7">
-          People
-          Served
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-</div>
     </>
   );
 };

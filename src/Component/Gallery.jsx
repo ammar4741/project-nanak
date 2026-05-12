@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 const GallerySection = () => {
   const [showMore, setShowMore] = useState(false);
 
@@ -16,7 +17,11 @@ const GallerySection = () => {
   ];
 
   return (
-    <div id="gallery" className="bg-[#F5F1EA]">
+    <section
+      id="gallery"
+      aria-labelledby="gallery-heading"
+      className="bg-[#F5F1EA]"
+    >
 
       {/* PARALLAX / QUOTE SECTION */}
       <section className="py-16 lg:py-24 px-4">
@@ -27,9 +32,9 @@ const GallerySection = () => {
           <p
             className="uppercase tracking-[3px]
             text-[#7c1d33]
-            font-bold text-sm mb-5 text-center"
+            font-bold text-2xl mb-5 text-center"
           >
-            Parallax / Quote Section
+             Quote
           </p>
 
           {/* PARALLAX CARD */}
@@ -43,7 +48,7 @@ const GallerySection = () => {
             {/* BACKGROUND IMAGE */}
             <div
               className="absolute inset-0
-              bg-fixed bg-center bg-cover"
+              bg-center bg-cover"
               style={{
                 backgroundImage:
                   "url('/masspeople.webp')",
@@ -102,12 +107,14 @@ const GallerySection = () => {
             <div className="text-center md:text-left w-full">
 
               <h2
+                id="gallery-heading"
                 className="text-3xl md:text-5xl
                 font-bold text-[#1a1a1a]
                 mt-4"
               >
                 Photo Gallery
               </h2>
+
             </div>
 
           </div>
@@ -121,15 +128,19 @@ const GallerySection = () => {
             ).map((image, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-3xl shadow-xl"
+                className="group relative overflow-hidden rounded-3xl shadow-lg"
               >
 
                 {/* IMAGE */}
                 <img
                   src={image}
-                  alt="Gallery"
+                  alt={`Gallery image ${index + 1}`}
+                  width="1200"
+                  height="700"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-[300px] object-cover
-                  transition-all duration-700
+                  transition-transform duration-700
                   group-hover:scale-110"
                 />
 
@@ -137,7 +148,7 @@ const GallerySection = () => {
                 <div
                   className="absolute inset-0
                   bg-black/10 group-hover:bg-black/30
-                  transition-all duration-500"
+                  transition-colors duration-500"
                 ></div>
 
               </div>
@@ -148,6 +159,8 @@ const GallerySection = () => {
               <div className="flex justify-center mt-5">
 
                 <button
+                  type="button"
+                  aria-label="Show more gallery images"
                   onClick={() => setShowMore(true)}
                   className="bg-[#c8a96b]
                   hover:bg-[#b89253]
@@ -155,7 +168,7 @@ const GallerySection = () => {
                   px-7 py-3
                   rounded-xl
                   font-semibold
-                  transition-all duration-300"
+                  transition-colors duration-300"
                 >
                   Show More
                 </button>
@@ -174,15 +187,19 @@ const GallerySection = () => {
             {galleryImages.map((image, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-3xl shadow-xl"
+                className="group relative overflow-hidden rounded-3xl shadow-lg"
               >
 
                 {/* IMAGE */}
                 <img
                   src={image}
-                  alt="Gallery"
+                  alt={`Gallery image ${index + 1}`}
+                  width="1200"
+                  height="700"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-[280px] object-cover
-                  transition-all duration-700
+                  transition-transform duration-700
                   group-hover:scale-110"
                 />
 
@@ -190,7 +207,7 @@ const GallerySection = () => {
                 <div
                   className="absolute inset-0
                   bg-black/10 group-hover:bg-black/30
-                  transition-all duration-500"
+                  transition-colors duration-500"
                 ></div>
 
               </div>
@@ -207,15 +224,19 @@ const GallerySection = () => {
             {galleryImages.slice(0, 9).map((image, index) => (
               <div
                 key={index}
-                className="group relative overflow-hidden rounded-3xl shadow-xl"
+                className="group relative overflow-hidden rounded-3xl shadow-lg"
               >
 
                 {/* IMAGE */}
                 <img
                   src={image}
-                  alt="Gallery"
+                  alt={`Gallery image ${index + 1}`}
+                  width="1200"
+                  height="700"
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-[300px] object-cover
-                  transition-all duration-700
+                  transition-transform duration-700
                   group-hover:scale-110"
                 />
 
@@ -223,7 +244,7 @@ const GallerySection = () => {
                 <div
                   className="absolute inset-0
                   bg-black/10 group-hover:bg-black/30
-                  transition-all duration-500"
+                  transition-colors duration-500"
                 ></div>
 
               </div>
@@ -234,7 +255,7 @@ const GallerySection = () => {
         </div>
       </section>
 
-    </div>
+    </section>
   );
 };
 
